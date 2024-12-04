@@ -1,0 +1,7 @@
+version: '3'
+
+services:
+  go-api:
+    image: i_go_api
+    ports:
+      - "8081:8081"
