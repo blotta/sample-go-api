@@ -3,5 +3,7 @@ version: '3'
 services:
   go-api:
     image: i_go_api
+    environment:
+      - FOO=local
     ports:
       - "8081:8081"

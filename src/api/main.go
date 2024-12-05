@@ -1,14 +1,21 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
+	"os"
 )
 
 func handleRoot(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusOK)
 	w.Header().Set("Content-Type", "application/json")
-	w.Write([]byte("Hello Sample Go API"))
+	var e, exists = os.LookupEnv("FOO")
+	if !exists {
+		e = "no env"
+	}
+	var resp = fmt.Sprintf("Hello Sample GO API. foo: %s", e)
+	w.Write([]byte(resp))
 }
 
 func main() {
